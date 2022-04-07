@@ -16,7 +16,7 @@ resolution = 100
 def P(n, p):
     return n * p
 
-def binomial_calc(n, k, p):
+def binomial_sum_gt(n, k, p):
     bi_sum = 0.0
     for kx in range(k,n+1):
         bc = m.comb(n, kx)
@@ -32,8 +32,8 @@ P81c = [int(np.ceil(x)) for x in P81]
 P162c = [int(np.ceil(x)) for x in P162]
 
 print(P81c[0])
-P81s = [binomial_calc(81, P81c[k-1], k/resolution) for k in range(1,resolution+1)]
-P162s = [binomial_calc(162, P162c[k-1], k/resolution) for k in range(1,resolution+1)]
+P81s = [binomial_sum_gt(81, P81c[k-1], k/resolution) for k in range(1,resolution+1)]
+P162s = [binomial_sum_gt(162, P162c[k-1], k/resolution) for k in range(1,resolution+1)]
 
 R = [x/y for (x,y) in zip(P81s, P162s)]
 
@@ -42,7 +42,7 @@ import matplotlib.pyplot as plt
 xt = plt.xticks([x for x in range(1,resolution+1) if x % (resolution/10) == 0])
 
 plt.xlabel('Probability Percentage of Winning Single Game')
-plt.ylabel('Ratio of Probabilities of Winning At Least np Games')
+plt.ylabel('Ratio of Winning At Least np for 81, 162 Games')
 #plt.xlim((0,100))
 plt.plot(R, 'b')
 plt.show()
