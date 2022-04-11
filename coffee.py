@@ -10,7 +10,7 @@ Created on Sun Mar 20 09:33:21 2022
 import random as rd
 
 N = 6
-NR_TRIALS = 10000
+NR_TRIALS = 100000
 
 total_count = 0
 
