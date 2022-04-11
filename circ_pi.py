@@ -57,8 +57,8 @@ import matplotlib.pyplot as plt
 #xt = plt.xticks([x for x in xtk])
 # yt = plt.yticks([x / 10 for x in range(101)])
 
-plt.xlabel('Percentage Probability for Stronger Team')
-plt.ylabel('Prob of Weaker Team Winning, Series Length')
+plt.xlabel('Pecentage Representation of a/r (length needle = 2a)')
+plt.ylabel('Probability with Respect to Edge')
 #plt.xlim((0,50))
 plt.plot(No_Ends, 'r')
 plt.plot(One_End, 'b')
