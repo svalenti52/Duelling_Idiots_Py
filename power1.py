@@ -22,10 +22,8 @@ for ix in range(nr_events):
     z = Z(x,y)
     z_bins.append(z)
 
-sorted_z_bins = sorted(z_bins)
-
 import matplotlib.pyplot as plt
-n, bins, patches = plt.hist(sorted_z_bins, 100)
+n, bins, patches = plt.hist(z_bins, 100)
 
 plt.xlabel('Histogram of Z = X**Y')
 plt.ylabel('Numbers in Each Bin (width 0.01)')
