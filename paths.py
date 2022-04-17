@@ -28,6 +28,6 @@ import matplotlib.pyplot as plt
 plt.xlabel('Length of Line Segment')
 plt.ylabel('Scaled Magnitude')
 
-# To get distribution plot, change Cumulative to True
+# To get distribution plot, change cumulative to True
 n, bins, patches = plt.hist(L_array_sorted, 200, histtype='step', density=True, cumulative=False)
 plt.show()
