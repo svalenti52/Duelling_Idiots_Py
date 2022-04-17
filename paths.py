@@ -26,8 +26,8 @@ L_array_sorted = sorted(L_array)
 
 import matplotlib.pyplot as plt
 plt.xlabel('Length of Line Segment')
-plt.ylabel('Number Per Total Sample = 100,000')
+plt.ylabel('Scaled Magnitude')
 
-plt.hist(L_array_sorted, histtype='step')
+# To get distribution plot, change Cumulative to True
+n, bins, patches = plt.hist(L_array_sorted, 200, histtype='step', density=True, cumulative=False)
 plt.show()
-
