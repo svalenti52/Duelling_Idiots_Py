@@ -17,11 +17,11 @@ for ix in range(100000):
     DistSqr.append((x1-x2)**2 + (y1-y2)**2)
 
 import matplotlib.pyplot as plt
-plt.xlabel('Length of Line Segment')
-plt.ylabel('Scaled Magnitude')
+plt.xlabel('Landing difference in position')
+plt.ylabel('Number Sampled (Total = 100,000)')
 
 # To get distribution plot, change cumulative to True
-n, bins, patches = plt.hist(DistSqr, 200, histtype='step', density=True, cumulative=False)
+n, bins, patches = plt.hist(DistSqr, 200, histtype='step', density=False, cumulative=False)
 plt.show()
 
 ProbZgt1 = 0.0
