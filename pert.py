@@ -27,7 +27,7 @@ nt = 5
 pt = 6
 rndwrk = 7
 
-nr_events = 1
+nr_events = 1000
 
 tasks = [[[0,0], 0, 0, 0, 0, [task2,task3], [], 0],
          [[2,4], 0, 0, 0, 0, [task4,task5], [task1], 0],
@@ -53,11 +53,16 @@ for ne in range(nr_events):
         if task[nt] == []:
             task[lf] = task[ef]
     
-    for rtask in rev_tasks:
-        rtask[ls] = rtask[lf] - rtask[rndwrk]
-        for rtx in rtask[pt]:
-#            if task[ls] < tasks[rtx][lf]:
-            tasks[rtx][lf] = rtask[ls]
+    # for rtask in rev_tasks:
+    #     rtask[ls] = rtask[lf] - rtask[rndwrk]
+    #     for rtx in rtask[pt]:
+    #         #if task[ls] < tasks[rtx][lf]:
+    #         tasks[rtx][lf] = rtask[ls]
+
+    for ix in range(8):
+        tasks[task8-ix][ls] = tasks[task8-ix][lf] - tasks[task8-ix][rndwrk] 
+        for jx in tasks[task8-ix][pt]:
+            tasks[jx][lf] = tasks[task8-ix][ls]
 
     for ix, task in enumerate(tasks):
         if task[es] == task[ls]:
@@ -65,11 +70,11 @@ for ne in range(nr_events):
 
     completion.append(tasks[task8][ef])
     
-    # for task in tasks:
-    #     task[es] = 0
-    #     task[ef] = 0
-    #     task[ls] = 0
-    #     task[lf] = 0
+    for task in tasks:
+        task[es] = 0
+        task[ef] = 0
+        task[ls] = 0
+        task[lf] = 0
     
 
 
