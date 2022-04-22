@@ -29,14 +29,14 @@ rndwrk = 7
 
 nr_events = 1000
 
-tasks = [[[0,0], 0, 0, 0, 0, [task2,task3], [], 0],
-         [[2,4], 0, 0, 0, 0, [task4,task5], [task1], 0],
-         [[1,2], 0, 0, 0, 0, [task4,task5], [task1], 0],
-         [[1,2], 0, 0, 0, 0, [task6], [task2,task3], 0],
-         [[2,4], 0, 0, 0, 0, [task7], [task2,task3], 0],
-         [[2,4], 0, 0, 0, 0, [task7], [task4], 0],
-         [[1,2], 0, 0, 0, 0, [task8], [task5,task6], 0],
-         [[0,0], 0, 0, 0, 0, [], [task7], 0]]
+tasks = [[[0,0], 0, 0, 100, 100, [task2,task3], [], 0],
+         [[2,4], 0, 0, 100, 100, [task4,task5], [task1], 0],
+         [[1,2], 0, 0, 100, 100, [task4,task5], [task1], 0],
+         [[1,2], 0, 0, 100, 100, [task6], [task2,task3], 0],
+         [[2,4], 0, 0, 100, 100, [task7], [task2,task3], 0],
+         [[2,4], 0, 0, 100, 100, [task7], [task4], 0],
+         [[1,2], 0, 0, 100, 100, [task8], [task5,task6], 0],
+         [[0,0], 0, 0, 100, 100, [], [task7], 0]]
 
 rev_tasks = reversed(tasks)
 
@@ -62,7 +62,8 @@ for ne in range(nr_events):
     for ix in range(8):
         tasks[task8-ix][ls] = tasks[task8-ix][lf] - tasks[task8-ix][rndwrk] 
         for jx in tasks[task8-ix][pt]:
-            tasks[jx][lf] = tasks[task8-ix][ls]
+            if tasks[task8-ix][ls] < tasks[jx][lf]:
+                tasks[jx][lf] = tasks[task8-ix][ls]
 
     for ix, task in enumerate(tasks):
         if task[es] == task[ls]:
@@ -73,22 +74,21 @@ for ne in range(nr_events):
     for task in tasks:
         task[es] = 0
         task[ef] = 0
-        task[ls] = 0
-        task[lf] = 0
+        task[ls] = 100
+        task[lf] = 100
     
 
 
-#=============================================================================
-print('1. ', tasks[task1])
-print('2. ', tasks[task2])
-print('3. ', tasks[task3])
-print('4. ', tasks[task4])
-print('5. ', tasks[task5])
-print('6. ', tasks[task6])
-print('7. ', tasks[task7])
-print('8. ', tasks[task8])
-
-#=============================================================================
+# #=============================================================================
+# print('1. ', tasks[task1])
+# print('2. ', tasks[task2])
+# print('3. ', tasks[task3])
+# print('4. ', tasks[task4])
+# print('5. ', tasks[task5])
+# print('6. ', tasks[task6])
+# print('7. ', tasks[task7])
+# print('8. ', tasks[task8])
+# =============================================================================
 
 import matplotlib.pyplot as plt
 plt.xlabel('')
@@ -96,6 +96,5 @@ plt.ylabel('')
 
 # To get distribution plot, change cumulative to True
 #n, bins, patches = plt.hist(completion, 13, density=False, cumulative=False)
-#n, bins, patches = plt.hist(critical, 16, density=False, cumulative=False)
 plt.plot(critical)
 plt.show()
